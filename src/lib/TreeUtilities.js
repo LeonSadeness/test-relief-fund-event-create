@@ -98,8 +98,9 @@ export const FindNode = function (id, nodes) {
 * Последовательность ноды от крайней, до корневой
 * @typedef Sequence
 * @type {Object}
-* @property {Number[]} ids - идентификатор ноды
-* @property {Object[]} values - значение ноды
+* @property {Number} id - идентификатор последовательности (конкатенация всех ID нод)
+* @property {Number[]} ids - идентификаторы ноды впорядке изнутри наружу
+* @property {Object[]} values - значения ноды впорядке изнутри наружу
 */
 
 /**
@@ -109,6 +110,7 @@ export const FindNode = function (id, nodes) {
  */
 export const GetSequence = function (node) {
     let result = {
+        id: -1,
         ids: [node.id],
         values: [node.value]
     };
@@ -116,11 +118,36 @@ export const GetSequence = function (node) {
     if (node.level > 0) {
         let parent = node?.parent;
         while (parent) {
-            result.ids.unshift(parent.id);
+            result.ids.push(parent.id);
             result.values.unshift(parent.value);
             parent = parent?.parent;
         }
     }
-    
+    result.id = result.ids?.reduce((a,c) => a += c.toString(), '');
+
     return result;
+}
+
+/**
+ * Возвращает массив последовательностей из массива идентификаторов
+ * @param {Number[]} ids - идентификаторы последовательностей обьединенные в массиве
+ * @param {Node[]} nodes - массив нод
+ * @returns {Sequence[]} - массив моделей последовательности
+ */
+export const GetSequences = function (ids, nodes) {
+    let result = [];
+
+    for (let i = 0; i < ids.length; i++) {
+        const item = ids[i];
+        let node = FindNode(item, nodes);
+        let sequence = GetSequence(node);
+        result.push(sequence);
+
+        if (node.level > 0) {
+            i += node.level;
+        }
+    }
+
+    return result;
+
 }

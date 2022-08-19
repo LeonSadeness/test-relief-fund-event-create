@@ -17,7 +17,7 @@
           arrow
         />
       </div>
-      <ButtonIcon type="button" sm>
+      <ButtonIcon @click="DeleteSequence(sequence)" type="button" sm>
         <CrossAndArrowSVG class="sequence-svg cross" />
       </ButtonIcon>
     </div>
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { CreateOptionsAsync, FindNode, GetSequence } from "@/lib/TreeUtilities";
+import { CreateOptionsAsync, GetSequences } from "@/lib/TreeUtilities";
 import CrossAndArrowSVG from "../vectors/CrossAndArrowSVG.vue";
 import ButtonIcon from "./ButtonIcon.vue";
 
@@ -75,6 +75,33 @@ export default {
         name: "Профессиональные сообщества",
         groups: [],
       },
+      {
+        id: 7,
+        name: "Взрослые",
+        groups: [
+          {
+            id: 8,
+            name: "Имеющие редкие заболевания",
+            groups: [
+              {
+                id: 9,
+                name: "Spina Bifida",
+                groups: [],
+              },
+              {
+                id: 10,
+                name: "Буллёзный эпидермолиз",
+                groups: [],
+              },
+            ],
+          },
+          {
+            id: 11,
+            name: "С инвалидностью",
+            groups: [],
+          },
+        ],
+      },
     ];
     this.staticOptions = await CreateOptionsAsync(data);
   },
@@ -84,25 +111,24 @@ export default {
       return !result;
     },
     valueData() {
-      let result = [];
-
-      if (!this.isNoOptions) {
-        for (let i = 0; i < this.value.length; i++) {
-          const item = this.value[i];
-          let node = FindNode(item, this.staticOptions);
-          let sequence = GetSequence(node);
-          result.push(sequence);
-
-          if (node.level > 0) {
-            i += node.level;
-          }
-        }
-      }
-
-      return result;
+      if (!this.isNoOptions)
+        return GetSequences(this.value, this.staticOptions);
     },
   },
-  methods: {},
+  methods: {
+    DeleteSequence(sequence) {
+      let result = [];
+      let filteredSequences = this.valueData?.filter(
+        (i) => i.id !== sequence.id
+      );
+      for (let i = 0; i < filteredSequences.length; i++) {
+        const item = filteredSequences[i];
+        result.push(...item.ids);
+      }
+
+      this.$emit("input", result);
+    },
+  },
 };
 </script>
 

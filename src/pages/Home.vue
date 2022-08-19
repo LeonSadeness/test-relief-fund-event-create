@@ -16,7 +16,7 @@
         <p class="label-1 label-targets-groups">
           Укажите, кому помогает ваша организация
         </p>
-        <ListSelectedTree :value="[4, 2, 1, 6]" class="list-tree-targets-groups" />
+        <ListSelectedTree v-model="listSelectedTreeValue" class="list-tree-targets-groups" />
         <SelectTree />
       </section>
 
@@ -43,9 +43,14 @@ export default {
   components: { InputUI, SelectTree, ButtonForm, ListSelectedTree },
   data() {
     return {
-      listSelectedTreeValue: [4, 2, 1, 6],
-      processing: false,
-      form: "",
+
+      form: {
+        processing: false,
+        data:{
+          listSelectedTreeValue: [4, 2, 1, 6, 10, 8, 7],
+
+        }        
+      },
     };
   },
 };
