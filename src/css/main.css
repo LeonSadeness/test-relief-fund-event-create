@@ -1,0 +1,124 @@
+/* #region Fonts */
+@font-face {
+  font-family: "FuturaBook";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://design.nuzhnapomosh.ru/fonts/futura/book/futurabook.woff2")
+      format("woff2"),
+    url("https://design.nuzhnapomosh.ru/fonts/futura/book/futurabook.woff")
+      format("woff");
+}
+
+@font-face {
+  font-family: "FuturaDemi";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("https://design.nuzhnapomosh.ru/fonts/futura/demi/futurademi.woff2")
+      format("woff2"),
+    url("https://design.nuzhnapomosh.ru/fonts/futura/demi/futurademi.woff")
+      format("woff");
+}
+
+@font-face {
+  font-family: "Leksa";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://design.nuzhnapomosh.ru/fonts/leksa/regular/leksaregular.woff2")
+      format("woff2"),
+    url("https://design.nuzhnapomosh.ru/fonts/leksa/regular/leksaregular.woff")
+      format("woff");
+}
+
+@font-face {
+  font-family: "Leksa";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("https://design.nuzhnapomosh.ru/fonts/leksa/bold/leksabold.woff2")
+      format("woff2"),
+    url("https://design.nuzhnapomosh.ru/fonts/leksa/bold/leksabold.woff")
+      format("woff");
+}
+
+@font-face {
+  font-family: "Leksa";
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url("https://design.nuzhnapomosh.ru/fonts/leksa/bold-italic/leksabolditalic.woff2")
+      format("woff2"),
+    url("https://design.nuzhnapomosh.ru/fonts/leksa/bold-italic/leksabolditalic.woff")
+      format("woff");
+}
+
+@font-face {
+  font-family: "Leksa";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://design.nuzhnapomosh.ru/fonts/leksa/italic/leksaitalic.woff2")
+      format("woff2"),
+    url("https://design.nuzhnapomosh.ru/fonts/leksa/italic/leksaitalic.woff")
+      format("woff");
+}
+
+@font-face {
+  font-family: "RomanovskyRegular";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://design.nuzhnapomosh.ru/fonts/romanovsky/regular/romanovskyregular.woff2")
+      format("woff2"),
+    url("https://design.nuzhnapomosh.ru/fonts/romanovsky/regular/romanovskyregular.woff")
+      format("woff");
+}
+
+@font-face {
+  font-family: "RomanovskyRegular";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("https://design.nuzhnapomosh.ru/fonts/romanovsky/bold/romanovskybold.woff2")
+      format("woff2"),
+    url("https://design.nuzhnapomosh.ru/fonts/romanovsky/bold/romanovskybold.woff")
+      format("woff");
+}
+/* #endregion */
+
+body {
+  color: #302f2d;
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-base);
+}
+hr {
+  height: 1px;
+  background: #e6e6e6;
+}
+.fill-current {
+  fill: currentColor;
+}
+
+h1 {
+  line-height: 50px;
+  font-size: 50px;
+  font-family: var(--font-futurademi);
+}
+
+.h3 {
+  font-family: var(--font-futurabook);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 35px;
+}
+
+.label-1 {
+  font-family: var(--font-futurabook);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px;
+}

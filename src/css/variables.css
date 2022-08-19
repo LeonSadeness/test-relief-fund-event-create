@@ -1,0 +1,12 @@
+:root {
+    --primary: #FAFAFA;
+    --primary-dark: #797979;
+    --secondary: #E65639;
+
+    --primary-border: solid 1px #e6e6e6;
+
+    --font-base: 'Helvetica','Arial',sans-serif;
+    --font-futurademi: 'FuturaDemi',var(--font-base);
+    --font-futurabook: 'FuturaBook',var(--font-base);
+    --font-romanovsky: 'RomanovskyRegular',var(--np-font-leksa);
+  }
