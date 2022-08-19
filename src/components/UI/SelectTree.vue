@@ -18,12 +18,13 @@ export default { components: { Cross90SVG } };
 </script>
 
 <style scoped>
-.container-tree{
-
+.container-tree {
 }
 
 /* #region Add button */
 .add-btn {
+  font-size: 20px;
+  line-height: 25px;
   border-radius: 20px;
   display: flex;
   gap: 20px;
@@ -32,7 +33,7 @@ export default { components: { Cross90SVG } };
   transition: background 0.2s ease-out;
 }
 .add-btn:hover {
-    background: var(--primary);
+  background: var(--primary);
 }
 .add-btn-plus {
   width: 40px;

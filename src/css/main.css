@@ -91,7 +91,7 @@
 body {
   color: #302f2d;
   -webkit-font-smoothing: antialiased;
-  font-family: var(--font-base);
+  font-family: var(--font-futurabook);
 }
 hr {
   height: 1px;

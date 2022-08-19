@@ -1,21 +1,36 @@
 <template>
-  <div>
-    <div class="sequence" v-for="(sequence, i) in valueData" :key="`${name}-lsi-${i}`">
-      <div v-for="(value, j) in sequence.values" :key="`${name}-lsi-${j}`">
+  <div class="sequencees">
+    <div
+      class="sequence"
+      v-for="(sequence, i) in valueData"
+      :key="`${name}-lsi-${i}`"
+    >
+      <div
+        class="sequence-item"
+        v-for="(value, j) in sequence.values"
+        :key="`${name}-lsi-${j}`"
+      >
         {{ value }}
+        <CrossAndArrowSVG
+          v-show="j < sequence.values.length - 1"
+          class="sequence-svg arrow"
+          arrow
+        />
       </div>
-      <CrossAndArrowSVG arrow />
-      <CrossAndArrowSVG />
+      <ButtonIcon type="button" sm>
+        <CrossAndArrowSVG class="sequence-svg cross" />
+      </ButtonIcon>
     </div>
   </div>
 </template>
 
 <script>
 import { CreateOptionsAsync, FindNode, GetSequence } from "@/lib/TreeUtilities";
-import CrossAndArrowSVG from '../vectors/CrossAndArrowSVG.vue';
+import CrossAndArrowSVG from "../vectors/CrossAndArrowSVG.vue";
+import ButtonIcon from "./ButtonIcon.vue";
 
 export default {
-  components: { CrossAndArrowSVG },
+  components: { CrossAndArrowSVG, ButtonIcon },
   props: {
     value: Array,
     options: Array,
@@ -93,12 +108,33 @@ export default {
 
 
 <style scoped>
-.sequence{
-    display: flex;
-    gap: 10px;
-    
+.sequencees {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-.sequence-item{
-
+.sequence {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  line-height: 25px;
+  background: var(--primary);
+  padding: 5px 15px;
+  border-radius: 20px;
+  height: 40px;
+  max-width: max-content;
+}
+.sequence-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+.sequence-svg {
+  fill: #999999;
+}
+.arrow {
+  height: 10px;
 }
 </style>

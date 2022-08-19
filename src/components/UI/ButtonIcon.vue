@@ -1,13 +1,17 @@
 <template>
-  <button class="container-btn" v-bind="$attrs" v-on="listeners">
-      <slot />
+  <button :class="{ sm: sm }" class="container-btn" v-on="listeners">
+    <slot />
   </button>
 </template>
 
 <script>
-import Hourglass from "../vectors/Hourglass.vue";
 export default {
-  components: { Hourglass },
+  props: {
+    sm: {
+      type: Boolean,
+      default: false,
+    },
+  },
   computed: {
     listeners: function () {
       let result = Object.assign({}, this.$listeners, {});
@@ -19,28 +23,36 @@ export default {
 
 <style scoped>
 .container-btn {
-  position: relative;
-  max-width: max-content;
-  color: white;
-  font-family: var(--font-futurademi);
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 18px;
-  text-align: center;
-  background: var(--secondary);
-  height: 60px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  background: white;
+  color: #999;
+  height: 40px;
+  width: 40px;
   display: flex;
-  flex-direction: row;
-  padding: 22px 40px 20px;
-  transition: opacity 0.2s ease-out;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  transition: all 0.2s ease-out;
+  border-radius: 40px;
 }
-.container-btn:disabled {
+.container-btn:hover:disabled, .container-btn:disabled {
   color: white;
-  background: var(--primary-dark);
-  cursor: auto;
+  background: #ddd;
+  cursor: default;
 }
 .container-btn:hover {
-  opacity: 75%;
+  background: var(--secondary);
+  color: white;
+}
+
+.container-btn > svg {
+  fill: currentColor;
+}
+
+.sm {
+  height: 20px;
+  width: 20px;
+  padding: 5px;
 }
 </style>
