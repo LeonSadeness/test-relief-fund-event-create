@@ -1,12 +1,31 @@
 :root {
-    --primary: #FAFAFA;
-    --primary-dark: #797979;
-    --secondary: #E65639;
+  --primary: #fafafa;
+  --primary-dark: #797979;
+  --secondary: #e65639;
 
-    --primary-border: solid 1px #e6e6e6;
+  --primary-border: solid 1px #e6e6e6;
 
-    --font-base: 'Helvetica','Arial',sans-serif;
-    --font-futurademi: 'FuturaDemi',var(--font-base);
-    --font-futurabook: 'FuturaBook',var(--font-base);
-    --font-romanovsky: 'RomanovskyRegular',var(--np-font-leksa);
-  }
+  --font-base: "Helvetica", "Arial", sans-serif;
+  --font-futurademi: "FuturaDemi", var(--font-base);
+  --font-futurabook: "FuturaBook", var(--font-base);
+  --font-romanovsky: "RomanovskyRegular", var(--np-font-leksa);
+}
+
+.bg-primary {
+  background: var(--primary);
+}
+.bg-primary-dark {
+  background: var(--primary-dark);
+}
+.bg-secondary {
+  background: var(--secondary);
+}
+.text-primary {
+  color: var(--primary);
+}
+.text-primary-dark {
+  color: var(--primary-dark);
+}
+.text-secondary {
+  color: var(--secondary);
+}
