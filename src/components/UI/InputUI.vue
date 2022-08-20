@@ -1,7 +1,6 @@
 <template>
   <input
     v-bind="$attrs"
-    v-on="listeners"
     class="custom-input"
     :value="value"
     @input="$emit('input', $event.target.value)"
@@ -12,12 +11,6 @@
 export default {
   props: {
     value: {},
-  },
-  computed: {
-    listeners: function () {
-      let result = Object.assign({}, this.$listeners, {});
-      return result;
-    },
   },
 };
 </script>

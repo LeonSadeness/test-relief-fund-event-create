@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { CreateOptionsAsync, GetSequences } from "@/lib/TreeUtilities";
+import { GetSequences } from "@/lib/TreeUtilities";
 import CrossAndArrowSVG from "../vectors/CrossAndArrowSVG.vue";
 import ButtonIcon from "./ButtonIcon.vue";
 
@@ -38,81 +38,16 @@ export default {
   data() {
     return {
       name: "lst-" + Date.now(),
-      staticOptions: null,
     };
-  },
-  async created() {
-    let data = [
-      {
-        id: 1,
-        name: "Дети",
-        groups: [
-          {
-            id: 2,
-            name: "Имеющие редкие заболевания",
-            groups: [
-              {
-                id: 3,
-                name: "Spina Bifida",
-                groups: [],
-              },
-              {
-                id: 4,
-                name: "Буллёзный эпидермолиз",
-                groups: [],
-              },
-            ],
-          },
-          {
-            id: 5,
-            name: "С инвалидностью",
-            groups: [],
-          },
-        ],
-      },
-      {
-        id: 6,
-        name: "Профессиональные сообщества",
-        groups: [],
-      },
-      {
-        id: 7,
-        name: "Взрослые",
-        groups: [
-          {
-            id: 8,
-            name: "Имеющие редкие заболевания",
-            groups: [
-              {
-                id: 9,
-                name: "Spina Bifida",
-                groups: [],
-              },
-              {
-                id: 10,
-                name: "Буллёзный эпидермолиз",
-                groups: [],
-              },
-            ],
-          },
-          {
-            id: 11,
-            name: "С инвалидностью",
-            groups: [],
-          },
-        ],
-      },
-    ];
-    this.staticOptions = await CreateOptionsAsync(data);
   },
   computed: {
     isNoOptions() {
-      let result = this.staticOptions?.length > 0;
+      let result = this.options?.length > 0;
       return !result;
     },
     valueData() {
       if (!this.isNoOptions)
-        return GetSequences(this.value, this.staticOptions);
+        return GetSequences(this.value ?? [], this.options);
     },
   },
   methods: {

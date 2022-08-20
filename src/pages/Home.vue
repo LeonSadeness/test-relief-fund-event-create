@@ -7,7 +7,7 @@
       <section class="form-section">
         <p class="h3 h-brand">Информация о сборе</p>
         <p class="label-1 label-brand">Название сбора</p>
-        <InputUI class="input-brand" />
+        <InputUI v-model="form.data.name" class="input-brand" />
       </section>
 
       <!-- Targets groups -->
@@ -16,8 +16,16 @@
         <p class="label-1 label-targets-groups">
           Укажите, кому помогает ваша организация
         </p>
-        <ListSelectedTree v-model="listSelectedTreeValue" class="list-tree-targets-groups" />
-        <SelectTree />
+        <ListSelectedTree
+          v-model="form.data.groups"
+          :options="targetsGroupsOptions.data"
+          class="list-tree-targets-groups"
+        />
+        <SelectTree
+          allOption
+          v-model="form.data.groups"
+          :options="targetsGroupsOptions.data"
+        />
       </section>
 
       <!-- Separator -->
@@ -25,33 +33,54 @@
 
       <ButtonForm
         type="button"
-        @click="processing = !processing"
-        :processing="processing"
         class="form-btn"
-        >сохранить и продолжить</ButtonForm
+        :disabled="form.processing"
+        :processing="form.processing"
+        @click="Submit"
       >
+        сохранить и продолжить
+      </ButtonForm>
     </form>
   </section>
 </template>
 
 <script>
+import { UseTargetsGroupsOptions } from "@/lib/API/TargetsGroups";
+import { UseFormCreateEvent } from "@/lib/forms/CreateEvent";
+
 import InputUI from "@/components/UI/InputUI.vue";
 import SelectTree from "@/components/UI/SelectTree.vue";
 import ButtonForm from "@/components/UI/ButtonForm.vue";
 import ListSelectedTree from "@/components/UI/ListSelectedTree.vue";
+import { GetSequences } from "@/lib/TreeUtilities";
+
 export default {
   components: { InputUI, SelectTree, ButtonForm, ListSelectedTree },
   data() {
     return {
-
-      form: {
-        processing: false,
-        data:{
-          listSelectedTreeValue: [4, 2, 1, 6, 10, 8, 7],
-
-        }        
-      },
+      targetsGroupsOptions: UseTargetsGroupsOptions(),
+      form: UseFormCreateEvent(),
     };
+  },
+  created() {
+    this.targetsGroupsOptions.Get();
+  },
+  methods: {
+    Submit() {
+      // #region Console output
+      let selected = GetSequences(
+        this.form.data.groups,
+        this.targetsGroupsOptions.data
+      );
+      console.log(this.form.data.groups);
+      console.log(
+        "Юзер кликнул",
+        selected?.map((i) => `"${i.values[i.values.length - 1]}"`)?.join(", и ")
+      );
+      // #endregion
+
+      this.form.Post().then(this.form.Reset);
+    },
   },
 };
 </script>

@@ -122,3 +122,15 @@ h1 {
   font-size: 20px;
   line-height: 25px;
 }
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shadow-md {
+  -webkit-box-shadow: 5px 5px 15px 1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 5px 5px 15px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 5px 5px 15px 1px rgba(0, 0, 0, 0.2);
+}

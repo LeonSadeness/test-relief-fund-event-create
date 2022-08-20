@@ -49,6 +49,8 @@ export default {
   width: 360px;
   background: var(--primary);
   border-right: var(--primary-border);
+  flex-grow: 0;
+  flex-shrink: 0;
 }
 .aside-panel-link {
   color: black;
@@ -71,4 +73,3 @@ export default {
   flex-grow: 1;
 }
 </style>
-
