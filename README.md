@@ -1,5 +1,10 @@
 # relief-fund-event-create
 
+## node:
+v14.16.0
+## npm:
+v6.14.11
+
 ## Project setup
 ```
 npm install
@@ -19,6 +24,3 @@ npm run build
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

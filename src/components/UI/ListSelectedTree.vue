@@ -46,8 +46,8 @@ export default {
       return !result;
     },
     valueData() {
-      if (!this.isNoOptions)
-        return GetSequences(this.value ?? [], this.options);
+      if (this.isNoOptions) return [];
+      return GetSequences(this.value ?? [], this.options);
     },
   },
   methods: {

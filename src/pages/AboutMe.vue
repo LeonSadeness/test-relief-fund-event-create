@@ -13,7 +13,10 @@
           <img src="@/assets/LSG_Rect_170.jpg" alt="avater" />
           <div>
             <p>Николай Храпков</p>
-            <a href="https://github.com/LeonSadeness/test-relief-fund-event-create">github.com</a>
+            <a
+              href="https://github.com/LeonSadeness/test-relief-fund-event-create"
+              >github.com</a
+            >
           </div>
         </div>
       </section>
@@ -55,8 +58,11 @@
         <p class="h3 sub-title">Дополнительно</p>
         <div>
           <p>
-            1. Шрифты можно взять с наших сайтов (например 
-            <a href="http://nuzhnapomosh.ru/">http://nuzhnapomosh.ru/</a>)
+            1. Шрифты можно взять с наших сайтов (например <a
+              href="http://nuzhnapomosh.ru/"
+            >
+              http://nuzhnapomosh.ru/ 
+              </a>)
           </p>
           <p>
             2. Не пользоваться готовыми библиотеками для выпадающих списков и
@@ -119,7 +125,7 @@ export default {
   display: flex;
   gap: 20px;
   align-items: center;
-  font-size: 18px;;
+  font-size: 18px;
 }
 .author > img {
   width: 50px;
